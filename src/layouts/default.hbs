@@ -1,7 +1,7 @@
 <html>
 <head>
-	<title>{{page.basename}}</title>
-	<script src="test.js?v={{version}}"></script>
+	<title>{{default title page.basename}}</title>
+	<script src="test.js?v={{now "%Y%m%d"}}"></script>
 </head>
 <body class="page-{{page.basename}}">
 {{> body}}
