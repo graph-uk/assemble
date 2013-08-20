@@ -8,17 +8,17 @@ module.exports = function(grunt) {
 			"options": {
 				//"engine": "mustache",
 				"layoutdir": "src/layouts",
-				"layout": "default.mustache",
+				"layout": "default.hbs",
 				"helpers": "helpers/*.js",
 				"flatten": true
 			},
 			"site": {
-				"src": ['src/pages/*.mustache'],
+				"src": ['src/pages/*.hbs'],
 				"dest": "site/"
 			}
 		},
 		"watch": {
-			"files": ['src/**/*.mustache'],
+			"files": ['src/**/*.hbs'],
 			"task": "assemble"
 		}
 	});
