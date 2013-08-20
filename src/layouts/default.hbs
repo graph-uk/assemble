@@ -13,7 +13,11 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="/assets/javascripts/libs/jquery-2.0.3.min.js"><\/script>')</script>
+{{#if production}}
+<script src="/assets/javascripts/all.min.js?v={{now "%d%H%M%S"}}"></script>
+{{else}}
 <script src="/assets/javascripts/all.js?v={{now "%d%H%M%S"}}"></script>
+{{/if}}
 
 </body>
 </html>

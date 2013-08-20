@@ -5,24 +5,31 @@ module.exports = function(grunt) {
 	// Project configuration.
 	grunt.initConfig({
 		// pages
-		"assemble": {
-			"options": {
-				"layoutdir": "src/layouts",
-				"layout": "default.hbs",
-				"partials": ["src/partials/*.hbs"],
-				"flatten": true
+		assemble: {
+			options: {
+				layoutdir: 'src/layouts',
+				layout: 'default.hbs',
+				partials: ['src/partials/*.hbs'],
+				flatten: true
 			},
-			"site": {
-				"src": ["src/pages/*.hbs"],
-				"dest": "./"
+			dev: {
+				src: ['src/pages/*.hbs'],
+				dest: './'
+			},
+			prod: {
+				options: {
+					production: true
+				},
+				src: ['src/pages/*.hbs'],
+				dest: './'
 			}
 		},
 
 		// styles
-		"less": {
-			"all": {
-				"files": {
-					"assets/styles/all.css": "assets/styles/all.less"
+		less: {
+			all: {
+				files: {
+					'assets/styles/all.css': 'assets/styles/all.less'
 				},
 				options: {
 					compress: true
@@ -58,7 +65,7 @@ module.exports = function(grunt) {
 		watch: {
 			pages: {
 				files: ['src/**/*.hbs'],
-				tasks: 'assemble'
+				tasks: 'assemble:dev'
 			},
 			styles: {
 				files: ['assets/styles/**/*.less'],
@@ -70,7 +77,7 @@ module.exports = function(grunt) {
 					'!assets/javascripts/all.js',
 					'!assets/javascripts/all.min.js'
 				],
-				tasks: ['concat']
+				tasks: 'concat'
 			}
 		}
 	});
@@ -83,6 +90,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-less');
 
 	// Default task.
-	grunt.registerTask('default', ['assemble', 'concat', 'uglify', 'less']);
+	grunt.registerTask('default', ['assemble:prod', 'concat', 'uglify', 'less']);
+	grunt.registerTask('dev', ['assemble:dev', 'concat', 'less']);
 
 };
