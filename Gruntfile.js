@@ -4,34 +4,85 @@ module.exports = function(grunt) {
 
 	// Project configuration.
 	grunt.initConfig({
+		// pages
 		"assemble": {
 			"options": {
-				//"engine": "mustache",
 				"layoutdir": "src/layouts",
 				"layout": "default.hbs",
-				"helpers": "helpers/*.js",
 				"partials": ["src/partials/*.hbs"],
 				"flatten": true
 			},
 			"site": {
-				"src": ['src/pages/*.hbs'],
-				"dest": "site/"
+				"src": ["src/pages/*.hbs"],
+				"dest": "./"
 			}
 		},
-		"watch": {
-			"files": ['src/**/*.hbs'],
-			"task": "assemble"
+
+		// styles
+		"less": {
+			"all": {
+				"files": {
+					"assets/styles/all.css": "assets/styles/all.less"
+				},
+				options: {
+					compress: true
+				}
+			}
+		},
+
+		// scripts
+		concat: {
+			options: {
+				banner: '/*! Banner */\n\n',
+				stripBanners: true
+			},
+			dist: {
+				src: [
+					'assets/javascripts/components/*.js',
+					'assets/javascripts/application.js',
+				],
+				dest: 'assets/javascripts/all.js'
+			}
+		},
+		uglify: {
+			options: {
+				banner: '<%= concat.options.banner %>'
+			},
+			dist: {
+				src: '<%= concat.dist.dest %>',
+				dest: 'assets/javascripts/all.min.js'
+			}
+		},
+
+		// file watcher
+		watch: {
+			pages: {
+				files: ['src/**/*.hbs'],
+				tasks: 'assemble'
+			},
+			styles: {
+				files: ['assets/styles/**/*.less'],
+				tasks: 'less'
+			},
+			scripts: {
+				files: [
+					'assets/javascripts/**/*.js',
+					'!assets/javascripts/all.js',
+					'!assets/javascripts/all.min.js'
+				],
+				tasks: ['concat']
+			}
 		}
 	});
 
 	// These plugins provide necessary tasks.
 	grunt.loadNpmTasks('assemble');
 	grunt.loadNpmTasks('grunt-contrib-watch');
-//	grunt.loadNpmTasks('grunt-contrib-concat');
-//	grunt.loadNpmTasks('grunt-contrib-uglify');
-//	grunt.loadNpmTasks('grunt-contrib-less');
+	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-less');
 
 	// Default task.
-	grunt.registerTask('default', ['assemble']);
+	grunt.registerTask('default', ['assemble', 'concat', 'uglify', 'less']);
 
 };

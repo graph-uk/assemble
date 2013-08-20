@@ -1,7 +1,8 @@
 <html>
 <head>
 	<title>{{default title page.basename}}</title>
-	<script src="test.js?v={{now "%Y%m%d"}}"></script>
+	<link rel="stylesheet" href="/assets/styles/all.css?v={{now "%d%H%M%S"}}">
+	<script src="/assets/javascripts/all.js?v={{now "%d%H%M%S"}}"></script>
 </head>
 <body class="page-{{page.basename}}">
 {{> body}}
