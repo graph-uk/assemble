@@ -10,6 +10,7 @@ module.exports = function(grunt) {
 				"layoutdir": "src/layouts",
 				"layout": "default.hbs",
 				"helpers": "helpers/*.js",
+				"partials": ["src/partials/*.hbs"],
 				"flatten": true
 			},
 			"site": {

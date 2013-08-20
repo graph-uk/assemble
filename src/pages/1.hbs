@@ -1,8 +1,17 @@
+---
+title: Hello
+---
+
 <h1>Page 1</h1>
 <div>content of page #1</div>
 
-<ul class="property-list">
-	{{#each page}}
-		<li>{{@key}}: {{this}}</li>
+<dl class="property-list">
+	{{#each pages}}
+		<dt>{{@index}}</dt>
+		<dd>
+			{{#each this.data}}
+				<p>{{@key}}: {{this}}</p>
+			{{/each}}
+		</dd>
 	{{/each}}
-</ul>
+</dl>
