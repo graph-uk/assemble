@@ -1,6 +1,13 @@
 ---
+title: Useful helpers
 layout: two-columns.hbs
 ---
 
-<h1>Page 3</h1>
-<div>content of page #3</div>
+<article class="article">
+	<h1 class="article__title">{{ title }}</h1>
+	<div class="article__body">
+		{{#each page}}
+			{{@key}} - {{this}}<br>
+		{{/each}}
+	</div>
+</article>

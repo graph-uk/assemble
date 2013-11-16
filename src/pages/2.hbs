@@ -1,4 +1,22 @@
-{{> sidebar}}
+---
+layout: two-columns.hbs
+---
 
-<h1>Page 2</h1>
-<div>content of page #2</div>
+<div class="article">
+	<h1 class="article__title">Page without title</h1>
+	<div class="article__body">
+{{#markdown}}
+If you’re too lazy to write html you can use markdown syntax here.
+
+## Heading 2
+
+Nam ut vehicula tellus. Integer vel pretium nisl, a molestie odio. Pellentesque habitant morbi
+tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque nec pretium turpis,
+non tristique magna. Morbi porta, tortor vitae condimentum ullamcorper, dui mi consequat ipsum,
+iaculis ornare libero ipsum ut arcu. Mauris nec neque non lectus faucibus condimentum.
+Sed lacinia neque at eros fringilla, et pulvinar arcu eleifend. Sed pretium erat neque,
+ut placerat felis dictum pellentesque. **Nullam sodales arcu at eleifend tristique.**
+
+{{/markdown}}
+	</div>
+</div>
