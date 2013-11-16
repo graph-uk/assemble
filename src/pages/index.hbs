@@ -7,6 +7,8 @@ layout: one-column.hbs
 
 <ul>
 	{{#each pages}}
-		<li><a href="{{this.dest}}">{{default this.data.title this.pagename}}</a></li>
+		{{#isnt this.basename "index"}}
+			<li><a href="{{this.dest}}">{{default this.data.title this.pagename}}</a></li>
+		{{/isnt}}
 	{{/each}}
 </ul>
