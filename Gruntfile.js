@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 		assemble: {
 			options: {
 				layoutdir: 'src/layouts',
-				layout: 'default.hbs',
+				layout: 'one-column.hbs',
 				partials: ['src/partials/*.hbs'],
 				flatten: true,
 				siteConfig: pkg.siteConfig

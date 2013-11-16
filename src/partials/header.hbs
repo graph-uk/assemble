@@ -1,0 +1,14 @@
+<div class="header">
+	<div class="header__content">
+		<div class="header__content-wrap">
+			<h1 class="header__title">
+				<span class="visuallyhidden">{{default title page.basename}} ::</span>
+				{{#is page.basename "index"}}
+					{{siteConfig.title}}
+				{{else}}
+					<a href="/">{{siteConfig.title}}</a>
+				{{/is}}
+			</h1>
+		</div>
+	</div>
+</div>

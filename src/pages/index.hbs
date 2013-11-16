@@ -1,0 +1,12 @@
+---
+title: Index page
+layout: one-column.hbs
+---
+
+<h1>Index</h1>
+
+<ul>
+	{{#each pages}}
+		<li><a href="{{this.dest}}">{{default this.data.title this.pagename}}</a></li>
+	{{/each}}
+</ul>

@@ -15,6 +15,7 @@
 		"assemble": "~0.4.27"
 	},
 	"siteConfig": {
-		"lang": "en"
+		"lang": "en",
+		"title": "Template project"
 	}
 }
