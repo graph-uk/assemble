@@ -1,0 +1,31 @@
+/**
+ * Layout with a sticky footer
+ */
+
+@stickyFooterHeight: 60px;
+@stickyFooterGap: 20px;
+
+html {
+	height: 100%;
+}
+.sticky-layout {
+	height: 100%;
+
+	&__wrap {
+		position: relative;
+		min-height: 100%;
+	}
+
+	* html &__wrap {
+		height: 100%;
+	}
+
+	&__content {
+		padding-bottom: @stickyFooterHeight + @stickyFooterGap;
+	}
+
+	&__footer {
+		position: relative;
+		margin: -@stickyFooterHeight auto 0;
+	}
+}
