@@ -2,8 +2,10 @@
 
 module.exports = function(grunt) {
 
-	// Project configuration.
 	grunt.initConfig({
+		// project config
+		pkg: grunt.file.readJSON('package.json'),
+
 		// pages
 		assemble: {
 			options: {
@@ -27,7 +29,7 @@ module.exports = function(grunt) {
 
 		// styles
 		less: {
-			all: {
+			dist: {
 				files: {
 					'assets/styles/all.css': 'assets/styles/all.less'
 				},
@@ -40,7 +42,8 @@ module.exports = function(grunt) {
 		// scripts
 		concat: {
 			options: {
-				banner: '/*! Banner */\n\n',
+				banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n\n',
+				separator: "\n\n;",
 				stripBanners: true
 			},
 			dist: {
@@ -77,20 +80,22 @@ module.exports = function(grunt) {
 					'!assets/javascripts/all.js',
 					'!assets/javascripts/all.min.js'
 				],
-				tasks: 'concat'
+				tasks: ['concat', 'uglify']
 			}
 		}
 	});
 
-	// These plugins provide necessary tasks.
+
 	grunt.loadNpmTasks('assemble');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-less');
 
-	// Default task.
-	grunt.registerTask('default', ['assemble:prod', 'concat', 'uglify', 'less']);
-	grunt.registerTask('dev', ['assemble:dev', 'concat', 'less']);
+
+	grunt.registerTask('assets', ['concat', 'uglify', 'less']);
+	grunt.registerTask('default', ['assemble:prod', 'assets']);
+	grunt.registerTask('dev', ['assemble:dev', 'assets']);
+	grunt.registerTask('watcher', ['dev', 'watch']);
 
 };
