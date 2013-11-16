@@ -1,23 +1,20 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="{{default siteConfig.lang 'en'}}" class="no-js">
 <head>
 	<meta charset="utf-8">
 	<title>{{default title page.basename}}</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/assets/styles/all.css?v={{now "%d%H%M%S"}}">
+	<script src="/assets/javascripts/core.js"></script>
 </head>
 <body class="page-{{page.basename}}">
-
+<!-- page content -->
 {{> body}}
+<!-- /page content -->
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="/assets/javascripts/libs/jquery-2.0.3.min.js"><\/script>')</script>
-{{#if production}}
-<script src="/assets/javascripts/all.min.js?v={{now "%d%H%M%S"}}"></script>
-{{else}}
-<script src="/assets/javascripts/all.js?v={{now "%d%H%M%S"}}"></script>
-{{/if}}
+<script src="/assets/javascripts/{{#if production}}all.min.js{{else}}all.js{{/if}}?v={{now "%d%H%M%S"}}"></script>
 
 </body>
 </html>

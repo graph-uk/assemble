@@ -2,9 +2,11 @@
 
 module.exports = function(grunt) {
 
+	var pkg = grunt.file.readJSON('package.json');
+
 	grunt.initConfig({
 		// project config
-		pkg: grunt.file.readJSON('package.json'),
+		pkg: pkg,
 
 		// pages
 		assemble: {
@@ -12,7 +14,8 @@ module.exports = function(grunt) {
 				layoutdir: 'src/layouts',
 				layout: 'default.hbs',
 				partials: ['src/partials/*.hbs'],
-				flatten: true
+				flatten: true,
+				siteConfig: pkg.siteConfig
 			},
 			dev: {
 				src: ['src/pages/*.hbs'],
