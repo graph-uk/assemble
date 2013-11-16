@@ -49,7 +49,7 @@ module.exports = function(grunt) {
 			dist: {
 				src: [
 					'assets/javascripts/components/*.js',
-					'assets/javascripts/application.js',
+					'assets/javascripts/application.js'
 				],
 				dest: 'assets/javascripts/all.js'
 			}
