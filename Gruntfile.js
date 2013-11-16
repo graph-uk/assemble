@@ -69,6 +69,10 @@ module.exports = function(grunt) {
 
 		// file watcher
 		watch: {
+			options: {
+				atBegin: true,
+				livereload: true
+			},
 			pages: {
 				files: ['src/**/*.hbs'],
 				tasks: 'assemble:dev'
@@ -85,20 +89,30 @@ module.exports = function(grunt) {
 				],
 				tasks: ['concat', 'uglify']
 			}
+		},
+
+		// internal server
+		connect: {
+			server: {
+				options: {
+					livereload: true
+				}
+			}
 		}
 	});
 
 
 	grunt.loadNpmTasks('assemble');
+	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-less');
 
 
+	grunt.registerTask('server', ['connect', 'watch']);
 	grunt.registerTask('assets', ['concat', 'uglify', 'less']);
 	grunt.registerTask('default', ['assemble:prod', 'assets']);
 	grunt.registerTask('dev', ['assemble:dev', 'assets']);
-	grunt.registerTask('watcher', ['dev', 'watch']);
 
 };
