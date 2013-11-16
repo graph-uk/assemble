@@ -1,16 +1,16 @@
 {
 	"private": true,
-	"name": "Assemble example",
-	"version": "1.0.0",
-	"description": "build script for static website",
+	"name": "assemble-template-project",
+	"version": "1.0.1",
+	"description": "Build script for the static website",
 	"dependencies": {
 		"grunt": "~0.4.1",
-		"grunt-cli": "~0.1.9",
-		"grunt-contrib-less": "~0.7.0",
+		"grunt-cli": "~0.1.11",
+		"grunt-contrib-less": "~0.8.2",
 		"grunt-contrib-concat": "~0.3.0",
-		"grunt-contrib-uglify": "~0.2.0",
-		"grunt-contrib-clean": "~0.4.0",
-		"grunt-contrib-watch": "~0.4.0",
-		"assemble": "~0.4.x"
+		"grunt-contrib-uglify": "~0.2.7",
+		"grunt-contrib-clean": "~0.5.0",
+		"grunt-contrib-watch": "~0.5.3",
+		"assemble": "~0.4.27"
 	}
 }
