@@ -5,14 +5,36 @@ title: Page number one
 <article class="article">
 	<h1 class="article__title">{{ title }}</h1>
 	<div class="article__body">
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi libero ante, viverra sit amet iaculis in, viverra tincidunt arcu. Curabitur pulvinar imperdiet velit, ac iaculis sem imperdiet ut. Aliquam malesuada tellus laoreet ullamcorper euismod. Donec nulla arcu, elementum in mauris dictum, dignissim interdum odio. Integer sit amet mauris posuere, lobortis enim quis, mollis ligula. Integer ut auctor nisl. Quisque et turpis vulputate magna aliquet malesuada. Aenean in nulla a nunc bibendum varius vel eget dolor. Donec euismod laoreet augue vitae rhoncus.</p>
+{{#markdown}}
 
-		<p>Maecenas in lobortis lorem. Vestibulum facilisis eros felis. Praesent imperdiet orci at elit cursus tempor. Mauris mattis consequat mollis. Vestibulum ornare rutrum placerat. Proin ornare orci at libero commodo tristique. Phasellus arcu lectus, porttitor eu blandit vel, faucibus et nisi.</p>
+Here is the list of useful helpers. For more information please visit [Assemble documentation](http://assemble.io/helpers/).
 
-		<p>Nullam consequat velit a nisi elementum, eget dignissim enim lobortis. Sed a neque risus. Nulla imperdiet nisl sed sem gravida, vel ultrices est commodo. Nunc vitae felis et massa venenatis lobortis. Vivamus luctus mollis lacus vel euismod. In molestie libero at ligula pellentesque euismod. Cras vel ultricies ipsum. Maecenas iaculis rhoncus neque. Praesent feugiat blandit neque eu sagittis. Etiam sed justo sed lorem consectetur congue. Nullam suscipit quam at turpis interdum egestas.</p>
+## Block helpers
 
-		<p>Vestibulum eu lorem id lectus tempus convallis. Aenean mattis dui id diam scelerisque euismod. Phasellus a sapien ut ligula dignissim pretium vel eget magna. Aenean auctor risus dolor, non lobortis tortor posuere quis. Nam lacinia libero eros, ac ultrices sapien blandit tincidunt. Proin sollicitudin ultricies dui, eu tempor lacus venenatis eu. Curabitur euismod, mi nec faucibus varius, ipsum sapien vulputate ligula, rutrum tincidunt augue libero sit amet felis. Integer porttitor accumsan tortor, eu rutrum felis sodales non. Quisque nec tellus eu diam consectetur faucibus. Nunc gravida eros vel lacus ultrices, in ultrices erat feugiat.</p>
+* **\{{#each object}}** — iterate over specified object (private variables inside block: `@index`, `@key`)
+* **\{{#if condition}}**<br>
+	**\{{#unless condition}}**<br>
+	**\{{#is arg1 arg2}}**<br>
+	**\{{#isnt arg1 arg2}}**<br>
+	**\{{#gt arg1 arg2}}**<br>
+	**\{{#gte arg1 arg2}}**<br>
+	**\{{#lt arg1 arg2}}**<br>
+	**\{{#lte arg1 arg2}}**<br>
+	**\{{#compare leftValue operator rightValue}}**<br>
+	**\{{#and arg1 arg2}}**<br>
+	**\{{#or arg1 arg2}}**
+	— conditionally render a block ([more helpers](http://assemble.io/helpers/helpers-comparison.html))
+* **\{{#markdown}}** — render block as markdown
 
-		<p>Donec euismod viverra ligula a tristique. Duis sit amet placerat libero. Praesent pharetra molestie neque et aliquam. Nam ac varius augue, nec vehicula elit. Nulla quis vulputate diam. Cras tempus turpis ornare eros dictum, sed bibendum odio pellentesque. In hac habitasse platea dictumst. Donec tincidunt sagittis augue, ac feugiat augue aliquet sit amet. Duis gravida dui sit amet dapibus mattis. Sed suscipit cursus dui a porttitor.</p>
+## Inline helpers
+
+* **\{{default value defaultValue}}** — provides a default or fallback value if a value doesn’t exist
+* **\{{formatDate date format}}** — [format date](http://www.ruby-doc.org/core-1.9.3/Time.html#method-i-strftime)
+* **\{{now format}}** — output current date and time
+* **\{{debug}}** — log current context
+
+{{/markdown}}
+
+
 	</div>
 </article>
