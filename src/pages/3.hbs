@@ -1,13 +1,49 @@
 ---
-title: Useful helpers
+title: Page number three
 layout: two-columns.hbs
+products:
+- { id: 1, name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+		type: "seminar", start: "10:00", end: "10:30" }
+- { id: 2, name: "Fusce dignissim eleifend quam, aliquam hendrerit nisi sodales eu.",
+		type: "seminar", start: "10:30", end: "11:10" }
+- { id: 3, name: "Praesent quis felis imperdiet sapien molestie cursus.",
+		type: "seminar", start: "11:10", end: "12:00" }
+- { id: 4, name: "Ut vel sapien tellus. Sed in dictum lacus.",
+		type: "masterclass", start: "13:00", end: "13:45" }
+- { id: 5, name: "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+		type: "masterclass", start: "13:45", end: "14:30" }
+- { id: 6, name: "Curabitur porttitor, arcu ac viverra aliquet, nisi quam dignissim velit, et tincidunt nisi turpis id est.",
+		type: "masterclass", start: "14:30", end: "15:00" }
 ---
 
 <article class="article">
-	<h1 class="article__title">{{ title }}</h1>
+	<h1 class="article__title">{{title}}</h1>
 	<div class="article__body">
-		{{#each page}}
-			{{@key}} - {{this}}<br>
-		{{/each}}
+
+		<p>
+			Conference includes three days of carefully curated talks, seminars and attractions
+			that explore the world of front-end development.
+		</p>
+
+		<h3>Schedule</h3>
+		<table class="schedule">
+			<thead>
+				<tr>
+					<th class="schedule__head">Time</th>
+					<th class="schedule__head">Title</th>
+					<th class="schedule__head">Type</th>
+				</tr>
+			</thead>
+			<tbody>
+			{{#products}}
+				<tr data-id="{{id}}" data-start="{{start}}" data-end="{{end}}">
+					<td class="schedule__col schedule__col_time">{{start}} &mdash; {{end}}</td>
+					<td class="schedule__col schedule__col_title">{{name}}</td>
+					<td class="schedule__col schedule__col_type">{{type}}</td>
+				</tr>
+			{{/products}}
+			</tbody>
+		</table>
+
 	</div>
 </article>

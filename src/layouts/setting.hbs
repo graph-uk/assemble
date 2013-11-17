@@ -2,13 +2,13 @@
 <html lang="{{default siteConfig.lang 'en'}}" class="no-js">
 <head>
 	<meta charset="utf-8">
-	<title>{{default title page.basename}} :: {{siteConfig.title}}</title>
+	<title>{{default title basename}} :: {{siteConfig.title}}</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/assets/styles/all.css?v={{now "%d%H%M%S"}}">
 	<script src="/assets/javascripts/core.js"></script>
 </head>
-<body class="page page-{{page.basename}} sticky-layout">
+<body class="page page-{{lowercase basename}} sticky-layout">
 <div class="sticky-layout__wrap">
 	<div class="sticky-layout__content">
 		<!-- header -->
