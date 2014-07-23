@@ -1,7 +1,5 @@
 .idea
 *.iml
 node_modules
-assets/javascripts/all.js
-assets/javascripts/all.min.js
-assets/styles/all.css
+assets/_
 *.html

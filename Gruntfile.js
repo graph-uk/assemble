@@ -34,7 +34,7 @@ module.exports = function(grunt) {
 		less: {
 			dist: {
 				files: {
-					'assets/styles/all.css': 'assets/styles/all.less'
+					'assets/_/styles/all.css': 'assets/styles/all.less'
 				},
 				options: {
 					compress: true
@@ -49,22 +49,41 @@ module.exports = function(grunt) {
 				separator: "\n\n;",
 				stripBanners: true
 			},
-			dist: {
+			scripts: {
 				src: [
-					'assets/javascripts/components/*.js',
+					'assets/javascripts/components/**/*.js',
 					'assets/javascripts/application.js'
 				],
-				dest: 'assets/javascripts/all.js'
+				dest: 'assets/_/javascripts/all.js'
+			},
+			core: {
+				src: [
+					'assets/javascripts/core.js'
+				],
+				dest: 'assets/_/javascripts/core.js'
 			}
 		},
 		uglify: {
 			options: {
 				banner: '<%= concat.options.banner %>'
 			},
-			dist: {
-				src: '<%= concat.dist.dest %>',
-				dest: 'assets/javascripts/all.min.js'
+			scripts: {
+				src: '<%= concat.scripts.dest %>',
+				dest: '<%= concat.scripts.dest %>'
+			},
+			core: {
+				src: '<%= concat.core.dest %>',
+				dest: '<%= concat.core.dest %>'
 			}
+		},
+
+		clean: {
+			options: {
+				force: true
+			},
+			pages: ['*.html'],
+			styles: ['assets/_/styles'],
+			scripts: ['assets/_/javascripts']
 		},
 
 		// file watcher
@@ -83,9 +102,7 @@ module.exports = function(grunt) {
 			},
 			scripts: {
 				files: [
-					'assets/javascripts/**/*.js',
-					'!assets/javascripts/all.js',
-					'!assets/javascripts/all.min.js'
+					'assets/javascripts/**/*.js'
 				],
 				tasks: ['concat', 'uglify']
 			}
@@ -103,6 +120,7 @@ module.exports = function(grunt) {
 
 
 	grunt.loadNpmTasks('assemble');
+	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-concat');
@@ -111,8 +129,8 @@ module.exports = function(grunt) {
 
 
 	grunt.registerTask('server', ['connect', 'watch']);
-	grunt.registerTask('assets', ['concat', 'uglify', 'less']);
-	grunt.registerTask('default', ['assemble:prod', 'assets']);
-	grunt.registerTask('dev', ['assemble:dev', 'assets']);
+	grunt.registerTask('assets', ['clean:styles', 'clean:scripts', 'concat', 'uglify', 'less']);
+	grunt.registerTask('default', ['clean:pages', 'assemble:prod', 'assets']);
+	grunt.registerTask('dev', ['clean:pages', 'assemble:dev', 'assets']);
 
 };
