@@ -12,7 +12,7 @@ npm install
 grunt server
 ```
 
-Next open [http://127.0.0.1:8000/](http://127.0.0.1:8000/) in you favourite browser.
+Next open [http://127.0.0.1:8000/](http://127.0.0.1:8000/) in your favourite browser.
 
 
 ## Changelog
