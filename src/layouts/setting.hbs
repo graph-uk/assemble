@@ -9,6 +9,8 @@
 	<script src="/assets/_/javascripts/core.js?v={{now "%d%H%M%S"}}"></script>
 </head>
 <body class="page page-{{lowercase basename}} sticky-layout">
+<div id="elements-placeholder" style="border: 0; clip: rect(0 0 0 0); overflow: hidden; margin: -1px; padding: 0; position: absolute; width: 1px; height: 1px;"></div>
+<script>document.getElementById("elements-placeholder").innerHTML = App.defaults('App.SVG', 'elements', '');</script>
 <div class="sticky-layout__wrap">
 	<div class="sticky-layout__content">
 		<!-- header -->

@@ -15,6 +15,6 @@ window[NS] = {};
  * @see https://github.com/mistakster/sugared-dom
  */
 window[NS].el=function(){var j=document,k=Object.prototype.toString,o={"class":"className",className:"className",defaultValue:"defaultValue","for":"htmlFor",html:"innerHTML",text:"textContent",value:"value"},p={checked:1,defaultChecked:1,disabled:1,multiple:1,selected:1},l=function(d,b){var f,c,a;f=0;for(c=b.length;f<c;f+=1)if(a=b[f])"[object Array]"===k.apply(a)?l(d,a):("string"===typeof a&&(a=j.createTextNode(a)),d.appendChild(a))},m=/#|\./;return function(d,b,f){"[object Array]"===k.apply(b)&&(f=b,b= null);var c,a,e,g,n,h,i;if(m.test(d)){c=d;a=c.split(m);d=a[0];b||(b={});h=0;g=1;for(n=a.length;g<n;g++)e=a[g],h=c.indexOf(e,h+1),"#"===c.charAt(h-1)?b.id=e:b.className=b.className?b.className+" "+e:e}d=j.createElement(d);if(b)for(i in b){c=d;a=i;e=b[i];if("style"===a)throw Error("Incompatible attribute 'style'");(g=o[a])?c[g]=null==e?"":""+e:p[a]?c[a]=!!e:null==e?c.removeAttribute(a):c.setAttribute(a,""+e)}f&&l(d,f);return d}}();
-}(this,"APP"));
+}(this,"App"));
 // ^^^^^^^^^^^^^^^^^^^^^
 // change namespace here

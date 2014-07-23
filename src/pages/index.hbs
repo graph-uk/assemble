@@ -12,3 +12,27 @@ layout: one-column.hbs
 		{{/isnt}}
 	{{/each}}
 </ul>
+
+<div class="svg-sprites">
+
+	<p>SVG sprites</p>
+
+	<button type="button" aria-label="Up"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6" width="10" height="6">
+		<use xlink:href="#nav-up"></use>
+	</svg></button>
+
+	<button type="button" aria-label="Down">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6" width="10" height="6">
+			<use xlink:href="#nav-down"></use>
+		</svg>
+	</button>
+
+	<span aria-label="Play" tabindex="-1">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
+			<g filter="url(#filter-shadow)">
+				<use xlink:href="#icon-play"></use>
+			</g>
+		</svg>
+	</span>
+
+</div>

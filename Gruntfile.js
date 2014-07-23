@@ -63,7 +63,8 @@ module.exports = function(grunt) {
 			},
 			core: {
 				src: [
-					'assets/javascripts/core.js'
+					'assets/javascripts/core.js',
+					'assets/_/javascripts/elements.js'
 				],
 				dest: 'assets/_/javascripts/core.js'
 			}
@@ -111,6 +112,12 @@ module.exports = function(grunt) {
 					'assets/javascripts/**/*.js'
 				],
 				tasks: 'concat'
+			},
+			elements: {
+				files: [
+					'assets/images/elements.svg'
+				],
+				tasks: ['elements', 'concat:core']
 			}
 		},
 
@@ -128,6 +135,25 @@ module.exports = function(grunt) {
 	});
 
 
+	grunt.registerTask('elements', 'Transform a SVG sprites to a JS file',
+		function () {
+			var LINE_LENGTH = 100, svg = [], i, l, content;
+
+			content = grunt.file.read('assets/images/elements.svg');
+			content = content.replace(/'/g, "\\'");
+			content = content.replace(/>\s+</g, "><").trim();
+			l = Math.ceil(content.length / LINE_LENGTH);
+
+			for (i = 0; i < l; i++) {
+				svg.push("'" + content.substr(i * LINE_LENGTH, LINE_LENGTH) + "'");
+			}
+
+			grunt.file.write('assets/_/javascripts/elements.js',
+				'App.defaults("App.SVG", {elements:\n' + svg.join('+\n') + '\n});');
+		}
+	);
+
+
 	grunt.loadNpmTasks('assemble');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-connect');
@@ -138,7 +164,7 @@ module.exports = function(grunt) {
 
 
 	grunt.registerTask('server', ['connect', 'watch']);
-	grunt.registerTask('assets', ['clean:styles', 'clean:scripts', 'concat', 'uglify', 'less']);
+	grunt.registerTask('assets', ['clean:styles', 'clean:scripts', 'elements', 'concat', 'uglify', 'less']);
 	grunt.registerTask('default', ['clean:pages', 'assemble:prod', 'assets']);
 	grunt.registerTask('dev', ['clean:pages', 'assemble:dev', 'assets']);
 
