@@ -1,4 +1,4 @@
-/*! assemble-template-project 2014-07-23 */
+/*! template-project 2014-07-23 */
 
 // set flag for javascript-enabled environment
 (function(d,c,r){d[c]=d[c][r]("no-js", "js")}(document.documentElement,"className","replace"));

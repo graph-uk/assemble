@@ -1,3 +1,4 @@
+/*! template-project 2014-07-23 */
 App.defaults("App.SVG", {elements:
 '<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0"><defs><path id="nav-down" d="M0 1l5 5 5'+
 '-5-1-1-4 4-4-4-1 1z"></path><path id="nav-up" d="M10 5l-5-5-5 5 1 1 4-4 4 4 1-1z"></path><polygon id'+

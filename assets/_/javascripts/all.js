@@ -1,4 +1,4 @@
-/*! assemble-template-project 2014-07-23 */
+/*! template-project 2014-07-23 */
 
 (function ($) {
 
