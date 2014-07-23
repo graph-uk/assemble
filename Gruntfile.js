@@ -4,6 +4,11 @@ module.exports = function(grunt) {
 
 	var pkg = grunt.file.readJSON('package.json');
 
+	if (typeof grunt.option('livereload') == "undefined") {
+		grunt.option('livereload', false);
+	}
+
+
 	grunt.initConfig({
 		// project config
 		pkg: pkg,
@@ -89,8 +94,9 @@ module.exports = function(grunt) {
 		// file watcher
 		watch: {
 			options: {
+				spawn: false,
 				atBegin: true,
-				livereload: true
+				livereload: grunt.option('livereload')
 			},
 			pages: {
 				files: ['src/**/*.hbs'],
@@ -104,7 +110,7 @@ module.exports = function(grunt) {
 				files: [
 					'assets/javascripts/**/*.js'
 				],
-				tasks: ['concat', 'uglify']
+				tasks: 'concat'
 			}
 		},
 
@@ -112,7 +118,10 @@ module.exports = function(grunt) {
 		connect: {
 			server: {
 				options: {
-					livereload: true
+					livereload: false,
+					base: ['Prototype', ''],
+					hostname: '*',
+					port: 8000
 				}
 			}
 		}
