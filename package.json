@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "assemble-template-project",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Build script for the static website",
   "dependencies": {
     "assemble": "~0.4.41",
