@@ -92,6 +92,17 @@ module.exports = function(grunt) {
 			scripts: ['assets/_/javascripts']
 		},
 
+		svg2string: {
+			options: {
+				template: 'App.defaults("App.SVG", {"[%= sanitized %]":\n[%= content %]\n});'
+			},
+			elements: {
+				files: {
+					'assets/_/javascripts/elements.js': 'assets/images/elements.svg'
+				}
+			}
+		},
+
 		// file watcher
 		watch: {
 			options: {
@@ -113,11 +124,11 @@ module.exports = function(grunt) {
 				],
 				tasks: 'concat'
 			},
-			elements: {
+			svg2string: {
 				files: [
 					'assets/images/elements.svg'
 				],
-				tasks: ['elements', 'concat:core']
+				tasks: ['svg2string', 'concat:core']
 			}
 		},
 
@@ -135,25 +146,6 @@ module.exports = function(grunt) {
 	});
 
 
-	grunt.registerTask('elements', 'Transform a SVG sprites to a JS file',
-		function () {
-			var LINE_LENGTH = 100, svg = [], i, l, content;
-
-			content = grunt.file.read('assets/images/elements.svg');
-			content = content.replace(/'/g, "\\'");
-			content = content.replace(/>\s+</g, "><").trim();
-			l = Math.ceil(content.length / LINE_LENGTH);
-
-			for (i = 0; i < l; i++) {
-				svg.push("'" + content.substr(i * LINE_LENGTH, LINE_LENGTH) + "'");
-			}
-
-			grunt.file.write('assets/_/javascripts/elements.js',
-				'App.defaults("App.SVG", {elements:\n' + svg.join('+\n') + '\n});');
-		}
-	);
-
-
 	grunt.loadNpmTasks('assemble');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-connect');
@@ -161,10 +153,11 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-less');
+	grunt.loadNpmTasks('grunt-svg2string');
 
 
 	grunt.registerTask('server', ['connect', 'watch']);
-	grunt.registerTask('assets', ['clean:styles', 'clean:scripts', 'elements', 'concat', 'uglify', 'less']);
+	grunt.registerTask('assets', ['clean:styles', 'clean:scripts', 'svg2string', 'concat', 'uglify', 'less']);
 	grunt.registerTask('default', ['clean:pages', 'assemble:prod', 'assets']);
 	grunt.registerTask('dev', ['clean:pages', 'assemble:dev', 'assets']);
 
